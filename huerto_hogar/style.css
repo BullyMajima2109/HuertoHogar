@@ -178,3 +178,10 @@ footer .links a {
   margin: 0 0.5rem;
   text-decoration: none;
 }
+
+
+.logo img {
+  height: 85px;  
+  width: auto;    
+  display: block; 
+}
