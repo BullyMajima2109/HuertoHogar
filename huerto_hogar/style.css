@@ -1,0 +1,180 @@
+/* style.css */
+body {
+  margin: 0;
+  font-family: 'Poppins', 'Roboto', sans-serif;
+  background: #fff;
+  color: #222;
+}
+
+/* Barra superior */
+.top-bar {
+  background: #819A91;
+  color: white;
+  text-align: center;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+}
+
+/* Header principal */
+.main-header {
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #eee;
+}
+.main-header .logo {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #253900;
+}
+.search-bar input {
+  width: 300px;
+  max-width: 100%;
+  padding: 0.6rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+.actions a {
+  margin-left: 1rem;
+  font-size: 0.9rem;
+  color: #253900;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* Barra de categorías */
+.categories-bar {
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+.categories-bar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+.categories-bar li {
+  position: relative;
+}
+.categories-bar a {
+  display: block;
+  padding: 1rem 0.5rem;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+.categories-bar a:hover {
+  color: #253900;
+}
+/* Submenús */
+.dropdown .submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 0.5rem 0;
+  min-width: 180px;
+  z-index: 1000;
+}
+.dropdown .submenu li {
+  display: block;
+}
+.dropdown .submenu a {
+  padding: 0.5rem 1rem;
+  color: #333;
+}
+.dropdown .submenu a:hover {
+  background: #f4f4f4;
+  color: #253900;
+}
+.dropdown:hover .submenu {
+  display: block;
+}
+
+/* Hero */
+.hero {
+  background: #f8f8f8;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+.hero h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+.hero .btn {
+  background: #253900;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Features */
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  background: white;
+  padding: 1.5rem 0;
+  color: #253900;
+  font-weight: 600;
+}
+
+/* Catálogo */
+.productos {
+  padding: 2rem;
+  text-align: center;
+}
+.productos .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+.productos .item {
+  background: white;
+  padding: 1rem;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  transition: box-shadow 0.3s ease;
+}
+.productos .item:hover {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.productos button {
+  margin-top: 1rem;
+  padding: 0.6rem 1rem;
+  background: #253900;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* Footer */
+footer {
+  background: #222;
+  color: #eee;
+  text-align: center;
+  padding: 1rem 2rem;
+  font-size: 0.9rem;
+}
+footer .links a {
+  color: #D1D8BE;
+  margin: 0 0.5rem;
+  text-decoration: none;
+}
