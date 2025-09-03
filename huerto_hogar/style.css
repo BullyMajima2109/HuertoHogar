@@ -9,7 +9,7 @@ body {
 /* Barra superior */
 .top-bar {
   background: #819A91;
-  color: white;
+  color: #D1D8BE;
   text-align: center;
   padding: 0.5rem;
   font-size: 0.9rem;
@@ -114,8 +114,8 @@ body {
   margin-bottom: 1.5rem;
 }
 .hero .btn {
-  background: #253900;
-  color: white;
+  background: #3F4F44;
+  color: whitesmoke;
   padding: 0.8rem 1.5rem;
   border-radius: 6px;
   text-decoration: none;
@@ -129,7 +129,7 @@ body {
   gap: 2rem;
   background: white;
   padding: 1.5rem 0;
-  color: #253900;
+  color: #3F4F44;
   font-weight: 600;
 }
 
@@ -157,7 +157,7 @@ body {
 .productos button {
   margin-top: 1rem;
   padding: 0.6rem 1rem;
-  background: #253900;
+  background: #3F4F44;
   color: white;
   border: none;
   border-radius: 4px;
@@ -167,7 +167,7 @@ body {
 
 /* Footer */
 footer {
-  background: #222;
+  background: #819A91;
   color: #eee;
   text-align: center;
   padding: 1rem 2rem;
