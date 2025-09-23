@@ -1,6 +1,10 @@
-/* LOCAL STORAGE Y AUTENTICACION */
-const LS_USERS   = 'hh_users';   // [{name,email,password}]
-const LS_SESSION = 'hh_session'; // {email}
+/* ===========================
+   AUTH + UI BASE
+   =========================== */
+
+/* LocalStorage */
+const LS_USERS   = 'hh_users';
+const LS_SESSION = 'hh_session';
 
 const getUsers     = () => JSON.parse(localStorage.getItem(LS_USERS) || '[]');
 const saveUsers    = (arr) => localStorage.setItem(LS_USERS, JSON.stringify(arr));
@@ -8,7 +12,78 @@ const getSession   = () => JSON.parse(localStorage.getItem(LS_SESSION) || 'null'
 const setSession   = (obj) => localStorage.setItem(LS_SESSION, JSON.stringify(obj));
 const clearSession = () => localStorage.removeItem(LS_SESSION);
 
-/* estado de auth en el header (Login/Salir + saludo) */
+/* ===========================
+   CARRITO (LocalStorage) - con normalización de {q} -> {qty}
+   =========================== */
+const LS_CART = 'hh_cart';
+
+function normalizeCart(arr){
+  // convierte items legacy {id, q} a {id, qty}
+  return (arr || []).map(it => {
+    const qty = it.qty != null ? it.qty : (it.q != null ? it.q : 0);
+    return { id: it.id, qty: Math.max(0, parseInt(qty,10)||0) };
+  }).filter(it => it.id && it.qty > 0);
+}
+
+const Cart = {
+  _getRaw(){ return JSON.parse(localStorage.getItem(LS_CART) || '[]'); },
+  _get(){
+    const norm = normalizeCart(this._getRaw());
+    // si normalizamos algo, guardamos de vuelta
+    if (JSON.stringify(this._getRaw()) !== JSON.stringify(norm)) {
+      localStorage.setItem(LS_CART, JSON.stringify(norm));
+    }
+    return norm;
+  },
+  _set(arr){
+    const norm = normalizeCart(arr);
+    localStorage.setItem(LS_CART, JSON.stringify(norm));
+    this.renderBadge();
+  },
+
+  count(){ return this._get().reduce((sum, it) => sum + it.qty, 0); },
+
+  add(id, qty = 1){
+    qty = Math.max(1, parseInt(qty,10) || 1);
+    const cart = this._get();
+    const i = cart.findIndex(it => it.id === id);
+    if (i >= 0) cart[i].qty += qty;
+    else cart.push({ id, qty });
+    this._set(cart);
+  },
+
+  set(id, qty){
+    qty = Math.max(0, parseInt(qty,10) || 0);
+    const cart = this._get();
+    const i = cart.findIndex(it => it.id === id);
+    if (i >= 0){
+      if (qty === 0) cart.splice(i,1);
+      else cart[i].qty = qty;
+    } else if (qty > 0){
+      cart.push({ id, qty });
+    }
+    this._set(cart);
+  },
+
+  remove(id){
+    const cart = this._get().filter(it => it.id !== id);
+    this._set(cart);
+  },
+
+  clear(){
+    localStorage.removeItem(LS_CART);
+    this.renderBadge();
+  },
+
+  renderBadge(){
+    const el = document.getElementById('cartCount');
+    if (el) el.textContent = String(this.count());
+  }
+};
+
+window.Cart = Cart;
+
+/* Header auth */
 function paintHeaderAuth() {
   const loginLink  = document.getElementById('loginLink');
   const logoutLink = document.getElementById('logoutLink');
@@ -37,7 +112,7 @@ function paintHeaderAuth() {
   }
 }
 
-/* Registro (solo activa si existe el formulario en la página) */
+/* Registro */
 function handleRegister() {
   const form = document.getElementById('registerForm');
   if (!form) return;
@@ -45,9 +120,10 @@ function handleRegister() {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const name = document.getElementById('regNombre').value.trim();
+    const name  = document.getElementById('regNombre').value.trim();
     const email = document.getElementById('regEmail').value.trim().toLowerCase();
-    const pass = document.getElementById('regPass').value;
+    const pass  = document.getElementById('regPass').value;
+    const phone = document.getElementById('regPhone') ? document.getElementById('regPhone').value.trim() : '';
 
     const nameErr = document.getElementById('regNombreErr');
     const emailErr = document.getElementById('regEmailErr');
@@ -71,9 +147,8 @@ function handleRegister() {
       return;
     }
 
-    users.push({ name, email, password: pass });
+    users.push({ name, email, password: pass, phone });
     saveUsers(users);
-
 
     localStorage.setItem('nombre', name);
     localStorage.setItem('email', email);
@@ -151,7 +226,6 @@ function initHeroSlider() {
   function nextSlide() { show((idx + 1) % slides.length); }
   function prevSlide() { show((idx - 1 + slides.length) % slides.length); }
 
-  // Dots
   const dotsBox = document.createElement('div');
   dotsBox.className = 'dots';
   const dots = [];
@@ -169,11 +243,9 @@ function initHeroSlider() {
     dots.forEach((d, k) => d.classList.toggle('active', k === i));
   }
 
-  // Controles
   if (next) next.addEventListener('click', () => { stop(); nextSlide(); start(); });
   if (prev) prev.addEventListener('click', () => { stop(); prevSlide(); start(); });
 
-  // Auto
   let timer;
   function start() { timer = setInterval(nextSlide, 5000); }
   function stop()  { clearInterval(timer); }
@@ -181,12 +253,11 @@ function initHeroSlider() {
   hero.addEventListener('mouseenter', stop);
   hero.addEventListener('mouseleave', start);
 
-  // Arranque
   show(idx);
   start();
 }
 
-/* Carrusel en productos */
+/* Carruseles */
 function initSectionCarousels() {
   const wraps = document.querySelectorAll('.slider-wrap');
   wraps.forEach((wrap) => {
@@ -198,7 +269,6 @@ function initSectionCarousels() {
     const next  = wrap.querySelector('.next');
     if (!track) return;
 
-    // Dots box después del carruse
     const dotsBox = document.createElement('div');
     dotsBox.className = 'slider-dots';
     wrap.after(dotsBox);
@@ -208,9 +278,7 @@ function initSectionCarousels() {
     let dots = [];
 
     function computePages() {
-      
       pages = Math.max(1, Math.ceil(track.scrollWidth / track.clientWidth));
-      
       dotsBox.innerHTML = '';
       dots = [];
       for (let i = 0; i < pages; i++) {
@@ -239,7 +307,6 @@ function initSectionCarousels() {
       track.scrollTo({ left: x, behavior: 'smooth' });
     }
 
-    // Botones
     const jump = () => track.clientWidth * 0.95;
     if (prev) prev.addEventListener('click', () => {
       stopAuto();
@@ -252,10 +319,8 @@ function initSectionCarousels() {
       startAuto();
     });
 
-    // Sync dots on scroll
     track.addEventListener('scroll', updateDots);
 
-    // ResizeObserver o fallback
     if ('ResizeObserver' in window) {
       const ro = new ResizeObserver(computePages);
       ro.observe(track);
@@ -264,7 +329,6 @@ function initSectionCarousels() {
     }
     computePages();
 
-    // Autoplay por páginas
     let timer;
     function nextPage() {
       const n = (current + 1) % pages;
@@ -284,32 +348,152 @@ function initSectionCarousels() {
   });
 }
 
-/* INIT  */
+/* ===========================
+   RENDER: Carrito (carrito.html) – robusto
+   =========================== */
+function renderCartPage(){
+  const container = document.getElementById('cartView');
+  const notice    = document.getElementById('cartNotice');
+  if(!container) return; // no estamos en carrito.html
+
+  const items = Cart._get();
+  if(items.length===0){
+    container.innerHTML=`<p>Tu carrito está vacío. <a href="index.html#frutas">Volver al catálogo</a></p>`;
+    if (notice) notice.textContent = '';
+    return;
+  }
+
+  const fmtCLP = (n) => n.toLocaleString('es-CL',{style:'currency',currency:'CLP',maximumFractionDigits:0});
+
+  // Toma el catálogo desde window o, si no, desde un global CATALOG (fallback)
+  const CAT = (typeof window !== 'undefined' && window.CATALOG)
+                ? window.CATALOG
+                : (typeof CATALOG !== 'undefined' ? CATALOG : null);
+
+  if (!CAT){
+    if (notice) notice.textContent = 'No se pudo cargar js/catalogo.js (revisa nombre y carpeta).';
+  } else {
+    if (notice) notice.textContent = '';
+  }
+
+  const getProd = (id) => {
+    if (!CAT) return null;
+    return CAT.find(p=>p.id===id) || null;
+  };
+
+  const rows = items.map(it=>{
+    const p = getProd(it.id);
+    if (p){
+      return `
+        <tr>
+          <td><div class="row-product"><img src="${p.img}" alt="${p.name}"><span>${p.name}</span></div></td>
+          <td>${fmtCLP(p.price)}</td>
+          <td>${it.qty}</td>
+          <td>${fmtCLP(p.price*it.qty)}</td>
+        </tr>`;
+    }
+    // fallback si no está en el catálogo
+    return `
+      <tr>
+        <td><div class="row-product"><div style="width:64px;height:64px;background:#f3f3f3;border-radius:8px;margin-right:.75rem;"></div><span>${it.id} (no encontrado)</span></div></td>
+        <td>${fmtCLP(0)}</td>
+        <td>${it.qty}</td>
+        <td>${fmtCLP(0)}</td>
+      </tr>`;
+  }).join('');
+
+  const subtotal = items.reduce((acc,it)=>{
+    const p = getProd(it.id);
+    return acc + (p ? p.price*it.qty : 0);
+  },0);
+
+  const envio = subtotal >= 30000 ? 0 : 3000;
+  const total = subtotal + envio;
+  const itemsCount = items.reduce((a,i)=>a+i.qty,0);
+
+  container.innerHTML = `
+    <table>
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Precio</th>
+          <th>Cantidad</th>
+          <th>Subtotal</th>
+        </tr>
+      </thead>
+      <tbody>${rows}</tbody>
+    </table>
+
+    <div class="cart-summary">
+      <p><span>Items</span><span>${itemsCount}</span></p>
+      <p><span>Subtotal</span><span>${fmtCLP(subtotal)}</span></p>
+      <p><span>Despacho</span><span>${envio===0?'Gratis':fmtCLP(envio)}</span></p>
+      <hr />
+      <p><strong>Total</strong><strong>${fmtCLP(total)}</strong></p>
+      <div style="margin-top:.5rem">
+        <button class="btn btn-empty" onclick="Cart.clear(); location.reload()">Vaciar</button>
+        <button class="btn btn-primary" onclick="alert('Demo: continuar compra')">Continuar compra</button>
+      </div>
+    </div>
+  `;
+}
+
+
+/* ===========================
+   INIT + Delegados
+   =========================== */
 document.addEventListener('DOMContentLoaded', () => {
-  // Auth
   paintHeaderAuth();
   handleRegister();
   handleLogin();
 
-  // UI sliders
   initHeroSlider();
   initSectionCarousels();
+
+  Cart.renderBadge();
+
+  renderCartPage();
+
+  // Agregar desde cards del índice
+  document.body.addEventListener('click', (e) => {
+    const btnAdd = e.target.closest('.btn-add');
+    if (!btnAdd) return;
+
+    const card = btnAdd.closest('.card');
+    if (!card) return;
+
+    const link = card.querySelector('a[href*="producto.html?id="]');
+    if (!link) return;
+
+    const url = new URL(link.getAttribute('href'), location.href);
+    const id  = url.searchParams.get('id');
+    if (!id) return;
+
+    Cart.add(id, 1);
+    alert('Producto agregado al carrito');
+  });
+
+  // Delegado genérico opcional
+  document.body.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-add-to-cart]');
+    if (!btn) return;
+    const id  = btn.getAttribute('data-id');
+    const qty = parseInt(btn.getAttribute('data-qty') || '1', 10);
+    if (id) {
+      Cart.add(id, qty);
+      alert('Producto agregado al carrito');
+    }
+  });
 });
 
-
-// Carrusel en #frutas
+/* Fix específico carrusel #frutas */
 (function () {
   const wrap = document.querySelector('#frutas .slider-wrap');
   if (!wrap) return;
 
-  const track =
-    wrap.querySelector('.track') ||
-    wrap.querySelector('.grid') ||
-    wrap;
-
+  const track = wrap.querySelector('.track') || wrap.querySelector('.grid') || wrap;
   const prev = wrap.querySelector('.prev');
   const next = wrap.querySelector('.next');
-
   const jump = () => Math.round(track.clientWidth * 0.9);
 
   prev && prev.addEventListener('click', () => {

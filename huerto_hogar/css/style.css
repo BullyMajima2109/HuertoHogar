@@ -445,3 +445,46 @@ footer .copy { margin: 0; opacity: .95; }
 
 #frutas .slider-wrap .prev { left: 8px; }
 #frutas .slider-wrap .next { right: 8px; }
+
+
+/* Badge de carrito en el header */
+.cart-badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  padding: 0 .25rem;
+  font-size:.75rem;
+  font-weight:700;
+  color:#fff;
+  background:#3F4F44;
+  border-radius: 999px;
+  margin-left:.35rem;
+  line-height:1;
+}
+
+
+/* Badge de carrito en el header */
+.cart-badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  padding: 0 .25rem;
+  font-size:.75rem;
+  font-weight:700;
+  color:#fff;
+  background:#3F4F44;
+  border-radius:999px;
+  margin-left:.35rem;
+  line-height:1;
+}
+
+/* Alinea el emoji 🛒 y el badge */
+#cartLink{
+  display:inline-flex;
+  align-items:center;
+  gap:.35rem;
+}

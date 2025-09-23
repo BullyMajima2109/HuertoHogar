@@ -29,10 +29,12 @@
 
     <div class="actions">
       <span id="helloUser" style="margin-right:.75rem; opacity:.85"></span>
-      <a href="#">Seguir Pedido</a>
       <a id="loginLink" href="login.html">Login</a>
       <a id="logoutLink" href="#" style="display:none">Salir</a>
-      <a href="#">Carrito</a>
+      <a href="index.html#frutas">Catálogo</a>
+      <a id="cartLink" href="carrito.html" aria-label="Carrito">
+        🛒 <span id="cartCount" class="cart-badge" aria-label="Productos en carrito">0</span>
+      </a>
     </div>
   </header>
 
@@ -77,97 +79,116 @@
 
     <!-- FRUTAS -->
     <section class="section-slider" id="frutas">
-  <h2 class="section-title">Las frutas más frescas</h2>
+      <h2 class="section-title">Las frutas más frescas</h2>
 
-  <div class="slider-wrap" data-slider="frutas">
-    <button class="nav prev" aria-label="Anterior">‹</button>
+      <div class="slider-wrap" data-slider="frutas">
+        <button class="nav prev" aria-label="Anterior">‹</button>
 
-    <div class="track">
-      <article class="card">
-        <div class="card-img"><img src="img/manzanafuji.jpg" alt="Manzana Fuji"></div>
-        <h4 class="title">Manzana Fuji</h4>
-        <p>1 kg</p>
-        <p>$1.200 /kg</p>
-        <button class="btn-add">Agregar</button>
-      </article>
+        <div class="track">
+          <article class="card">
+            <a href="producto.html?id=manzana-fuji">
+              <div class="card-img"><img src="img/manzanafuji.jpg" alt="Manzana Fuji"></div>
+              <h4 class="title">Manzana Fuji</h4>
+              <p>1 kg</p>
+              <p>$1.200 /kg</p>
+            </a>
+            <button class="btn-add">Agregar</button>
+          </article>
 
-      <article class="card">
-        <div class="card-img"><img src="img/naranja.jpg" alt="Naranja"></div>
-        <h4 class="title">Naranja</h4>
-        <p>1 kg</p>
-        <p>$1.000 /kg</p>
-        <button class="btn-add">Agregar</button>
-      </article>
+          <article class="card">
+            <a href="producto.html?id=naranja">
+              <div class="card-img"><img src="img/naranja.jpg" alt="Naranja"></div>
+              <h4 class="title">Naranja</h4>
+              <p>1 kg</p>
+              <p>$1.000 /kg</p>
+            </a>
+            <button class="btn-add">Agregar</button>
+          </article>
 
-      <article class="card">
-        <div class="card-img"><img src="img/frutilla.jpg" alt="Frutillas"></div>
-        <h4 class="title">Frutillas</h4>
-        <p>500 g</p>
-        <p>$1.800</p>
-        <button class="btn-add">Agregar</button>
-      </article>
+          <article class="card">
+            <a href="producto.html?id=frutillas">
+              <div class="card-img"><img src="img/frutilla.jpg" alt="Frutillas"></div>
+              <h4 class="title">Frutillas</h4>
+              <p>500 g</p>
+              <p>$1.800</p>
+            </a>
+            <button class="btn-add">Agregar</button>
+          </article>
 
-      <article class="card">
-        <div class="card-img"><img src="img/arandanos.jpeg" alt="Arándanos"></div>
-        <h4 class="title">Arándanos</h4>
-        <p>125 g</p>
-        <p>$1.500</p>
-        <button class="btn-add">Agregar</button>
-      </article>
+          <article class="card">
+            <a href="producto.html?id=arandanos">
+              <div class="card-img"><img src="img/arandanos.jpeg" alt="Arándanos"></div>
+              <h4 class="title">Arándanos</h4>
+              <p>125 g</p>
+              <p>$1.500</p>
+            </a>
+            <button class="btn-add">Agregar</button>
+          </article>
 
-      <article class="card">
-        <div class="card-img"><img src="img/frambuesa.png" alt="Frambuesas"></div>
-        <h4 class="title">Frambuesas</h4>
-        <p>125 g</p>
-        <p>$1.600</p>
-        <button class="btn-add">Agregar</button>
-      </article>
+          <article class="card">
+            <a href="producto.html?id=frambuesas">
+              <div class="card-img"><img src="img/frambuesa.png" alt="Frambuesas"></div>
+              <h4 class="title">Frambuesas</h4>
+              <p>125 g</p>
+              <p>$1.600</p>
+            </a>
+            <button class="btn-add">Agregar</button>
+          </article>
 
-      <article class="card">
-        <div class="card-img"><img src="img/mandarina.jpg" alt="Mandarinas"></div>
-        <h4 class="title">Mandarinas</h4>
-        <p>1 kg</p>
-        <p>$1.100 /kg</p>
-        <button class="btn-add">Agregar</button>
-      </article>
+          <article class="card">
+            <a href="producto.html?id=mandarinas">
+              <div class="card-img"><img src="img/mandarina.jpg" alt="Mandarinas"></div>
+              <h4 class="title">Mandarinas</h4>
+              <p>1 kg</p>
+              <p>$1.100 /kg</p>
+            </a>
+            <button class="btn-add">Agregar</button>
+          </article>
 
-      <article class="card">
-        <div class="card-img"><img src="img/melon.jpg" alt="Melón"></div>
-        <h4 class="title">Melón</h4>
-        <p>Unidad</p>
-        <p>$2.500</p>
-        <button class="btn-add">Agregar</button>
-      </article>
+          <article class="card">
+            <a href="producto.html?id=melon">
+              <div class="card-img"><img src="img/melon.jpg" alt="Melón"></div>
+              <h4 class="title">Melón</h4>
+              <p>Unidad</p>
+              <p>$2.500</p>
+            </a>
+            <button class="btn-add">Agregar</button>
+          </article>
 
-      <article class="card">
-        <div class="card-img"><img src="img/sandia.jpg" alt="Sandía"></div>
-        <h4 class="title">Sandía</h4>
-        <p>Unidad</p>
-        <p>$3.500</p>
-        <button class="btn-add">Agregar</button>
-      </article>
+          <article class="card">
+            <a href="producto.html?id=sandia">
+              <div class="card-img"><img src="img/sandia.jpg" alt="Sandía"></div>
+              <h4 class="title">Sandía</h4>
+              <p>Unidad</p>
+              <p>$3.500</p>
+            </a>
+            <button class="btn-add">Agregar</button>
+          </article>
 
-      <article class="card">
-        <div class="card-img"><img src="img/uva.png" alt="Uvas"></div>
-        <h4 class="title">Uvas</h4>
-        <p>1 bandeja</p>
-        <p>$2.000</p>
-        <button class="btn-add">Agregar</button>
-      </article>
+          <article class="card">
+            <a href="producto.html?id=uvas">
+              <div class="card-img"><img src="img/uva.png" alt="Uvas"></div>
+              <h4 class="title">Uvas</h4>
+              <p>1 bandeja</p>
+              <p>$2.000</p>
+            </a>
+            <button class="btn-add">Agregar</button>
+          </article>
 
-      <article class="card">
-        <div class="card-img"><img src="img/platano.jpg" alt="Plátano"></div>
-        <h4 class="title">Plátano</h4>
-        <p>1 kg</p>
-        <p>$800 /kg</p>
-        <button class="btn-add">Agregar</button>
-      </article>
+          <article class="card">
+            <a href="producto.html?id=platano">
+              <div class="card-img"><img src="img/platano.jpg" alt="Plátano"></div>
+              <h4 class="title">Plátano</h4>
+              <p>1 kg</p>
+              <p>$800 /kg</p>
+            </a>
+            <button class="btn-add">Agregar</button>
+          </article>
+        </div><!-- /track -->
 
-    </div><!-- /track -->
-
-    <button class="nav next" aria-label="Siguiente">›</button>
-  </div>
-</section>
+        <button class="nav next" aria-label="Siguiente">›</button>
+      </div>
+    </section>
 
     <!-- VERDURAS -->
     <section class="section-slider" id="verduras">
@@ -176,21 +197,27 @@
         <button class="nav prev">‹</button>
         <div class="track">
           <article class="card">
-            <div class="card-img"><img src="img/zanahoria.jpg" alt="Zanahoria"></div>
-            <h4 class="title">Zanahoria</h4>
-            <p>$900 /kg</p>
+            <a href="producto.html?id=zanahoria">
+              <div class="card-img"><img src="img/zanahoria.jpg" alt="Zanahoria"></div>
+              <h4 class="title">Zanahoria</h4>
+              <p>$900 /kg</p>
+            </a>
             <button class="btn-add">Agregar</button>
           </article>
           <article class="card">
-            <div class="card-img"><img src="img/espinaca.jpg" alt="Espinaca"></div>
-            <h4 class="title">Espinaca</h4>
-            <p>$700 /bolsa 500g</p>
+            <a href="producto.html?id=espinaca">
+              <div class="card-img"><img src="img/espinaca.jpg" alt="Espinaca"></div>
+              <h4 class="title">Espinaca</h4>
+              <p>$700 /bolsa 500g</p>
+            </a>
             <button class="btn-add">Agregar</button>
           </article>
           <article class="card">
-            <div class="card-img"><img src="img/pimientos.jpg" alt="Pimientos"></div>
-            <h4 class="title">Pimientos</h4>
-            <p>$1.500 /kg</p>
+            <a href="producto.html?id=pimientos">
+              <div class="card-img"><img src="img/pimientos.jpg" alt="Pimientos"></div>
+              <h4 class="title">Pimientos</h4>
+              <p>$1.500 /kg</p>
+            </a>
             <button class="btn-add">Agregar</button>
           </article>
         </div>
@@ -205,15 +232,19 @@
         <button class="nav prev">‹</button>
         <div class="track">
           <article class="card">
-            <div class="card-img"><img src="img/miel.jpg" alt="Miel Orgánica"></div>
-            <h4 class="title">Miel Orgánica</h4>
-            <p>$5.000 /frasco 500g</p>
+            <a href="producto.html?id=miel-organica">
+              <div class="card-img"><img src="img/miel.jpg" alt="Miel Orgánica"></div>
+              <h4 class="title">Miel Orgánica</h4>
+              <p>$5.000 /frasco 500g</p>
+            </a>
             <button class="btn-add">Agregar</button>
           </article>
           <article class="card">
-            <div class="card-img"><img src="img/quinoa.jpg" alt="Quinoa Orgánica"></div>
-            <h4 class="title">Quinoa Orgánica</h4>
-            <p>$3.500 /kg</p>
+            <a href="producto.html?id=quinoa-organica">
+              <div class="card-img"><img src="img/quinoa.jpg" alt="Quinoa Orgánica"></div>
+              <h4 class="title">Quinoa Orgánica</h4>
+              <p>$3.500 /kg</p>
+            </a>
             <button class="btn-add">Agregar</button>
           </article>
         </div>
@@ -228,9 +259,11 @@
         <button class="nav prev">‹</button>
         <div class="track">
           <article class="card">
-            <div class="card-img"><img src="img/leche.jpg" alt="Leche Entera"></div>
-            <h4 class="title">Leche Entera</h4>
-            <p>$1.200 /litro</p>
+            <a href="producto.html?id=leche-entera">
+              <div class="card-img"><img src="img/leche.jpg" alt="Leche Entera"></div>
+              <h4 class="title">Leche Entera</h4>
+              <p>$1.200 /litro</p>
+            </a>
             <button class="btn-add">Agregar</button>
           </article>
         </div>
@@ -258,5 +291,6 @@
 
   <!-- JS -->
   <script src="js/app.js"></script>
+  <script src="js/catalogo.js"></script>
 </body>
 </html>

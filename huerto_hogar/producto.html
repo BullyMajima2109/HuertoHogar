@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Producto – Huerto Hogar</title>
+
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/producto.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="top-bar">
+    <p>Despacho gratis sobre $30.000 • 10 % OFF primera compra</p>
+  </div>
+
+  <header class="main-header">
+    <div class="logo"><a href="index.html"><img src="img/logo.png" alt="Huerto Hogar"></a></div>
+    <div class="search-bar"><input type="text" placeholder="Buscar productos..." aria-label="Buscar productos"></div>
+    <div class="actions">
+        <span id="helloUser" style="margin-right:.75rem; opacity:.85"></span>
+        <a id="loginLink" href="login.html">Login</a>
+        <a id="logoutLink" href="#" style="display:none">Salir</a>
+        <a href="index.html#frutas">Catálogo</a>
+        <a id="cartLink" href="carrito.html" aria-label="Carrito">
+            🛒 <span id="cartCount" class="cart-badge" aria-label="Productos en carrito">0</span>
+        </a>
+    </div>
+  </header>
+
+  <main class="product-wrap">
+    <nav class="breadcrumb">
+      <a href="index.html">Inicio</a> <span>›</span>
+      <a href="index.html#frutas">Catálogo</a> <span>›</span>
+      <span id="bcName">Producto</span>
+    </nav>
+
+    <section id="productView" class="product"></section>
+    <section class="product-extra" id="productExtra"></section>
+
+    <div id="prodError" style="color:#c0392b;margin-top:1rem;"></div>
+  </main>
+
+  <footer id="contacto">
+    <div class="footer-inner">
+      <div class="footer-logo"><a href="index.html"><img src="img/logo1.png" alt="Huerto Hogar Footer Logo"></a></div>
+      <div class="links">
+        <a href="#">Contacto</a> | <a href="#">Preguntas Frecuentes</a> | <a href="#">Nosotros</a> | <a href="#">Sustentabilidad</a>
+      </div>
+      <p class="copy">© 2025 Huerto Hogar – Todos los derechos reservados</p>
+    </div>
+  </footer>
+
+  <script src="js/catalogo.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

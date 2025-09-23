@@ -1,0 +1,63 @@
+.cart-wrap {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem 3rem;
+}
+
+/* Tabla */
+.cart table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0 1.5rem;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.cart th, .cart td {
+  padding: .85rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #f1f1f1;
+}
+.cart th { font-weight: 600; color: #2f3e32; background: #fafafa; }
+
+.cart img {
+  width: 64px; height: 64px; object-fit: cover;
+  border-radius: 8px; margin-right: .75rem;
+}
+
+.cart .row-product {
+  display: flex; align-items: center; gap: .75rem;
+}
+
+/* Resumen */
+.cart-summary {
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  max-width: 420px;
+}
+.cart-summary p {
+  margin: .35rem 0;
+  display: flex; justify-content: space-between;
+}
+.cart-summary hr { border: none; border-top: 1px solid #eee; margin: .75rem 0; }
+.cart-summary strong { font-size: 1.2rem; }
+
+.btn {
+  display: inline-block; padding: .6rem 1rem; border-radius: 6px;
+  cursor: pointer; text-align: center;
+}
+.btn-empty {
+  border: 1px solid #3F4F44; color: #3F4F44; background: #fff; margin-right: .5rem;
+}
+.btn-primary { background: #3F4F44; color: #fff; border: none; }
+
+/* Badge del carrito (si no lo tienes ya en style.css) */
+.cart-badge{
+  display:inline-flex; align-items:center; justify-content:center;
+  min-width: 1.25rem; height: 1.25rem; padding: 0 .25rem;
+  font-size:.75rem; font-weight:700; color:#fff;
+  background:#3F4F44; border-radius:999px; margin-left:.35rem; line-height:1;
+}
+#cartLink{ display:inline-flex; align-items:center; gap:.35rem; }

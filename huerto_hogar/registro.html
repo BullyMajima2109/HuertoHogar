@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Registro – Huerto Hogar</title>
+
+  <!-- Estilos del proyecto -->
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/auth.css"/>
+
+  <!-- Tipografías -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Barra superior -->
+  <div class="top-bar">
+    <p>Despacho gratis sobre $30.000 • 10 % OFF primera compra</p>
+  </div>
+
+  <!-- Header (igual que index) -->
+  <header class="main-header">
+    <div class="logo">
+      <a href="index.html"><img src="img/logo.png" alt="Huerto Hogar"></a>
+    </div>
+    <div></div>
+    <div class="actions">
+      <span id="helloUser" style="margin-right:.75rem; opacity:.85"></span>
+      <a id="loginLink" href="login.html">Login</a>
+      <a id="logoutLink" href="#" style="display:none">Salir</a>
+    </div>
+  </header>
+
+  <!-- Contenido: REGISTRO -->
+  <main class="auth-wrap">
+    <section class="card">
+      <h1>Crear cuenta</h1>
+      <form id="registerForm" novalidate>
+        <div class="row">
+          <div>
+            <label for="regNombre">Nombre</label>
+            <input class="input" type="text" id="regNombre" required />
+            <span id="regNombreErr" class="error"></span>
+          </div>
+        </div>
+
+        <label for="regEmail">Correo electrónico</label>
+        <input class="input" type="email" id="regEmail" autocomplete="email" required />
+        <span id="regEmailErr" class="error"></span>
+
+        <label for="regPhone">Teléfono (Chile)</label>
+        <input
+          class="input"
+          type="tel"
+          id="regPhone"
+          inputmode="numeric"
+          autocomplete="tel"
+          placeholder="+56 9 8765 4321"
+          pattern="^(\+?56)?\s?9\s?\d{4}\s?\d{4}$"
+          required
+        />
+        <span id="regPhoneErr" class="error"></span>
+
+        <label for="regPass">Contraseña (mín. 6)</label>
+        <input class="input" type="password" id="regPass" minlength="6" autocomplete="new-password" required />
+        <span id="regPassErr" class="error"></span>
+
+        <div class="actions">
+          <button class="btn alt-btn" type="submit">Registrarme</button>
+        </div>
+        <p id="regMsg" class="ok"></p>
+
+        <p class="alt">¿Ya tienes cuenta? <a href="login.html">Iniciar sesión</a></p>
+      </form>
+    </section>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+/* ====== PRODUCTO (detalle) ====== */
+.product-wrap{
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.breadcrumb{
+  font-size:.95rem;
+  color:#444;
+  margin-bottom: 1rem;
+}
+.breadcrumb a{ color:#3F4F44; text-decoration: underline; }
+.breadcrumb span{ margin: 0 .35rem; }
+
+.product{
+  display:grid;
+  grid-template-columns: 1.1fr 1fr;   /* imagen | info */
+  gap: 2rem;
+  align-items: start;
+}
+
+.product .media{
+  border:1px solid #eee;
+  border-radius:12px;
+  padding:1rem;
+  background:#fff;
+}
+.product .media img{
+  width:100%;
+  height:420px;
+  object-fit:contain;
+  display:block;
+}
+
+.product .info h1{
+  margin:0 0 .5rem 0;
+  font-size:2rem;
+  color:#2c3e50;
+}
+.product .unit{ color:#666; margin:.25rem 0 .75rem; }
+.product .price{
+  font-size:1.6rem; font-weight:700; color:#3F4F44; margin:.25rem 0 1rem;
+}
+
+.qty{
+  display:flex; align-items:center; gap:.5rem; margin:.75rem 0 1rem;
+}
+.qty input{
+  width:80px; text-align:center; padding:.6rem; border:1px solid #ccc; border-radius:6px;
+}
+.qty button{
+  padding:.6rem .8rem; border:0; border-radius:6px; background:#819A91; color:#fff; font-weight:700; cursor:pointer;
+}
+
+.btn-primary{
+  display:inline-block; margin-top:.5rem;
+  padding:.9rem 1.2rem; border:0; border-radius:8px; background:#3F4F44; color:#fff; font-weight:700; cursor:pointer;
+}
+
+.desc{ margin-top:1rem; color:#333; line-height:1.5; }
+
+.product-extra{
+  margin-top:2rem; padding-top:1rem; border-top:1px solid #eee;
+}
+.product-extra h3{ margin:0 0 .5rem 0; }
+.related{
+  display:grid; grid-template-columns: repeat(auto-fill, minmax(180px,1fr)); gap:1rem;
+}
+.related .mini{
+  border:1px solid #eee; border-radius:10px; padding:.75rem; text-align:center; background:#fff; cursor:pointer;
+}
+.related .mini img{ width:100%; height:130px; object-fit:contain; border-radius:8px; }
+.related .mini .t{ font-weight:600; color:#3F4F44; margin:.4rem 0 .25rem; }
+.related .mini .p{ color:#444; font-size:.95rem; }
+
+/* Responsive */
+@media (max-width: 900px){
+  .product{ grid-template-columns: 1fr; }
+  .product .media img{ height:340px; }
+}
