@@ -1,3 +1,6 @@
+/* =========================
+   AUTH (login/registro) – Estilos aislados
+   ========================= */
 :root{
   --green:#3F4F44;
   --green-2:#819A91;
@@ -5,66 +8,104 @@
   --line:#eee;
 }
 
-.auth-wrap{
-  min-height:60vh;
-  display:flex;
-  align-items:flex-start;
-  justify-content:center;
-  padding:3rem 1rem;
+/* Contenedor principal de login/registro */
+main.auth-wrap{
+  width: 100%;
+  min-height: 60vh;
+  display: flex;
+  justify-content: center;         /* centra horizontal */
+  align-items: flex-start;         /* arriba (cámbialo a center si quieres centrado vertical) */
+  padding: 3rem 1rem;
+  box-sizing: border-box;
 }
 
-.card{
-  width:100%;
-  max-width:420px;
-  background:#fff;
-  border:1px solid var(--line);
-  border-radius:12px;
-  padding:2rem;
-  box-shadow:0 1px 2px rgba(0,0,0,.03);
+/* Tarjeta (scopeada para no afectar .card de productos) */
+.auth-wrap .card{
+  width: 100%;
+  max-width: 720px;                /* ancho final */
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 6px;              /* menos redondo */
+  padding: 2.5rem;                 /* margen interno */
+  box-shadow: 0 1px 2px rgba(0,0,0,.03);
+  margin-left: auto;               /* robusto centrado */
+  margin-right: auto;
 }
 
-.card h1{
-  margin:0 0 1rem 0;
-  font-size:1.4rem;
-  text-align:center;
+/* Título */
+.auth-wrap .card h1{
+  margin: 0 0 1.25rem 0;
+  font-size: 1.65rem;
+  text-align: center;
+  color: var(--text);
 }
 
-label{display:block; font-weight:600; margin:.5rem 0 .35rem}
-.input{
-  width:100%;
-  padding:.8rem .9rem;
-  border:1px solid #ccc;
-  border-radius:8px;
-  outline:none;
-  transition:border .15s ease;
+/* Gutter del formulario */
+.auth-wrap .card form{
+  width: 100%;
+  max-width: 600px;                /* ancho del form dentro de la tarjeta */
+  margin: 0 auto;
+  box-sizing: border-box;
 }
-.input:focus{border-color:#999}
 
-.actions{margin-top:1rem}
-.btn{
-  width:100%;
-  padding:.9rem 1rem;
-  border:0;
-  border-radius:8px;
-  background:var(--green);
-  color:#fff;
-  font-weight:700;
-  cursor:pointer;
+/* Etiquetas e inputs */
+.auth-wrap label{
+  display: block;
+  font-weight: 600;
+  margin: .8rem 0 .4rem;
+  color: #333;
 }
-.btn:hover{filter:brightness(.95)}
-.alt-btn{background:var(--green-2)}
 
-.alt{
-  text-align:center;
-  margin-top:1rem;
-  font-size:.95rem;
+.auth-wrap .input{
+  width: 100%;
+  min-width: 300px;                /* evita que quede muy angosto */
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  font-size: 1rem;
+  transition: border .15s ease;
+  box-sizing: border-box;
 }
-.alt a{font-weight:600; color:#333; text-decoration:underline}
+.auth-wrap .input:focus{ border-color:#999; }
 
-.error{color:#c0392b; font-size:.92rem; margin:.2rem 0 .2rem}
-.ok{color:#2e7d32; font-size:.92rem; margin:.4rem 0 0}
+/* Botón */
+.auth-wrap .actions{ margin-top: 1rem; }
+.auth-wrap .btn{
+  width: 100%;
+  padding: 1rem;
+  border: 0;
+  border-radius: 6px;
+  background: var(--green);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: filter .2s ease, transform .15s ease;
+}
+.auth-wrap .btn:hover{ filter: brightness(.95); transform: translateY(-1px); }
+.auth-wrap .btn.alt-btn{ background: var(--green-2); }
 
-/* Dots hero */
+/* Mensajería */
+.auth-wrap .error{ color:#c0392b; font-size:.92rem; margin:.2rem 0 .2rem; }
+.auth-wrap .ok{    color:#2e7d32; font-size:.92rem; margin:.4rem 0 0; }
+
+/* Link alternativo (ya tienes cuenta / crear cuenta) */
+.auth-wrap .alt{
+  text-align: center;
+  margin-top: 1.25rem;
+  font-size: .98rem;
+  color: #555;
+}
+.auth-wrap .alt a{
+  font-weight: 600;
+  color: #333;
+  text-decoration: underline;
+}
+
+/* -------------------------
+   Dots de sliders (opcional)
+   ------------------------- */
 .slider-hero .dots{
   position:absolute; bottom:14px; left:50%; transform:translateX(-50%);
   display:flex; gap:.5rem; z-index:4;
@@ -73,9 +114,8 @@ label{display:block; font-weight:600; margin:.5rem 0 .35rem}
   width:10px; height:10px; border-radius:50%;
   border:1px solid #fff; background:transparent; cursor:pointer;
 }
-.slider-hero .dot.active{ background:#fff }
+.slider-hero .dot.active{ background:#fff; }
 
-/* Dots carruseles */
 .slider-dots{
   display:flex; justify-content:center; gap:.5rem; margin-top:.75rem;
 }
@@ -83,167 +123,18 @@ label{display:block; font-weight:600; margin:.5rem 0 .35rem}
   width:10px; height:10px; border-radius:50%;
   border:1px solid var(--green); background:transparent; cursor:pointer;
 }
-.slider-dots .dot.active{ background:var(--green) }
+.slider-dots .dot.active{ background:var(--green); }
 
-/* --- Ajustes de ancho y radios para login/registro --- */
-.auth-wrap{
-  padding: 4rem 1rem;
-}
-
-.card{
-  max-width: 560px;      /* antes 420px */
-  border-radius: 8px;    /* antes 12px */
-  padding: 2.25rem;
-}
-
-.input{
-  border-radius: 6px;    /* menos redondo (antes 8px) */
-  padding: .9rem 1rem;
-  font-size: 1rem;
-}
-
-.btn{
-  border-radius: 6px;    /* menos redondo (antes 8px) */
-  padding: 1rem 1.1rem;
-  font-size: 1rem;
-}
-
-.alt{
-  margin-top: 1.25rem;
-  font-size: .98rem;
-}
-
-/* Opcional: títulos un pelín más grandes */
-.card h1{
-  font-size: 1.6rem;
-}
-
-
-/* --- Más ancho + margen interno (gutter) --- */
-.card{
-  max-width: 640px;     /* ancho de la tarjeta */
-  border-radius: 4px;   /* menos redondo */
-  padding: 2.25rem;     /* aire del contenedor */
-}
-
-/* los campos NO pegan a los bordes de la tarjeta */
-.card form{
-  max-width: 520px;     /* gutter interno */
-  margin: 0 auto;       /* centra el formulario */
-}
-
-.input, .btn{
-  border-radius: 4px;
-  font-size: 1rem;
-}
-
-/* botón un poco más alto */
-.btn{
-  padding: 1rem;
-  font-weight: 600;
-}
-
-/* título ligeramente más grande */
-.card h1{
-  font-size: 1.65rem;
-  margin-bottom: 1.25rem;
-}
-
-/* Responsive: en pantallas pequeñas usa todo el ancho */
-@media (max-width: 480px){
-  .card form{ max-width: 100%; }
-}
-
-/* Centrado horizontal robusto para login/registro */
-main.auth-wrap{
-  width: 100%;
-  display: flex !important;
-  justify-content: center !important;  /* centra la tarjeta */
-  align-items: flex-start;              /* arriba (puedes usar center si quieres vertical) */
-  padding: 4rem 1rem;
-}
-
-/* Por si algún estilo le da ancho/márgenes raros a main */
-main.auth-wrap *{
-  box-sizing: border-box;
-}
-
-/* Asegura que la tarjeta se centre incluso sin flex */
-.auth-wrap .card{
-  margin-left: auto !important;
-  margin-right: auto !important;
-  float: none !important;
-}
-
-
-/* --- Desapretar login/registro --- */
-main.auth-wrap{
-  display:flex !important;
-  justify-content:center !important;
-  padding: 3rem 1rem;
-}
-
-/* Tarjeta más flexible: ocupa hasta 92vw con tope */
-.auth-wrap .card{
-  width: min(800px, 92vw);   /* antes max-width fijo */
-  border-radius: 6px;
-  padding: 2rem;
-}
-
-/* Form con gutter en desktop, 100% en pantallas menores */
-.auth-wrap .card form{
-  max-width: 560px;     /* gutter interno en desktop */
-  margin: 0 auto;
-}
-
-/* Más aire entre controles */
-.auth-wrap label{ margin: .75rem 0 .35rem; }
-.auth-wrap .input{ padding: 1rem; }
-.auth-wrap .btn{ padding: 1rem; }
-
-/* Densidad y anchura en pantallas medianas/pequeñas */
+/* -------------------------
+   Responsive
+   ------------------------- */
 @media (max-width: 900px){
-  .auth-wrap .card form{ max-width: 100%; }  /* que NO quede angosto */
-  .auth-wrap .card{ padding: 1.75rem; }
+  main.auth-wrap{ padding: 2.5rem 1rem; }
+  .auth-wrap .card{ padding: 1.75rem; max-width: 95vw; }
+  .auth-wrap .card form{ max-width: 100%; }
 }
-@media (max-width: 560px){
-  .auth-wrap{ padding: 2rem 1rem; }
-  .auth-wrap .card{ width: 96vw; padding: 1.5rem; }
-  .auth-wrap label{ margin: .6rem 0 .3rem; }
-}
-
-/* --- Ajuste final: tarjeta más ancha y campos más largos --- */
-.auth-wrap .card{
-  width: 100%;
-  max-width: 720px;   /* más ancha (puedes subir a 800px si quieres) */
-  padding: 2.5rem;
-}
-
-.auth-wrap .card form{
-  max-width: 600px;   /* el formulario ocupa más espacio */
-  margin: 0 auto;
-}
-
-.auth-wrap .input,
-.auth-wrap .btn{
-  width: 100%;        /* campos y botón ocupan todo el ancho disponible */
-  min-width: 300px;   /* nunca más angostos que esto */
-  font-size: 1rem;
-  padding: 1rem;
-}
-
-.auth-wrap label{
-  margin: .8rem 0 .4rem;
-  font-weight: 600;
-}
-
-/* Responsive: en pantallas pequeñas el form usa todo */
 @media (max-width: 600px){
-  .auth-wrap .card{
-    max-width: 95vw;
-    padding: 1.5rem;
-  }
-  .auth-wrap .card form{
-    max-width: 100%;
-  }
+  main.auth-wrap{ padding: 2rem 1rem; }
+  .auth-wrap .card{ padding: 1.5rem; }
+  .auth-wrap .input{ min-width: 0; }     /* permite 100% reales en móviles */
 }

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nosotros – Huerto Hogar</title>
+
+  <!-- estilos globales -->
+  <link rel="stylesheet" href="css/style.css"/>
+  <!-- estilos específicos de esta página -->
+  <link rel="stylesheet" href="css/nosotros.css"/>
+
+  <!-- Tipografías -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Barra superior -->
+  <div class="top-bar">
+    <p>Despacho gratis sobre $30.000 • 10 % OFF primera compra</p>
+  </div>
+
+  <!-- Header -->
+  <header class="main-header">
+
+    <!-- Botón hamburguesa (colócalo como primer elemento DENTRO de .main-header) -->
+<button class="hamburger" id="hamburgerBtn"
+        aria-label="Abrir menú" aria-controls="mobileMenu" aria-expanded="false">
+  <span></span><span></span><span></span>
+</button>
+
+    <div class="logo">
+      <a href="index.html"><img src="img/logo.png" alt="Huerto Hogar"></a>
+    </div>
+    <div class="search-bar">
+      <input type="text" placeholder="Buscar productos..." aria-label="Buscar productos">
+    </div>
+    <div class="actions">
+      <span id="helloUser" style="margin-right:.75rem; opacity:.85"></span>
+      <a id="loginLink" href="login.html">Login</a>
+      <a id="logoutLink" href="#" style="display:none">Salir</a>
+      <a id="cartLink" href="carrito.html" aria-label="Carrito">
+        🛒 <span id="cartCount" class="cart-badge" aria-label="Productos en carrito">0</span>
+      </a>
+    </div>
+  </header>
+
+  <button class="hamburger" id="hamburgerBtn"
+        aria-label="Abrir menú" aria-controls="mobileMenu" aria-expanded="false">
+  <span></span><span></span><span></span>
+</button>
+
+<nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <ul>
+    <li><a href="index.html#frutas">Frutas</a></li>
+    <li><a href="index.html#verduras">Verduras</a></li>
+    <li><a href="index.html#organicos">Orgánicos</a></li>
+    <li><a href="index.html#lacteos">Lácteos</a></li>
+    <li class="sep"></li>
+    <li><a href="login.html" id="mmLogin">Login</a></li>
+    <li><a href="carrito.html">Carrito <span id="mmCartCount" class="cart-badge">0</span></a></li>
+    <li><a href="nosotros.html">Nosotros</a></li>
+  </ul>
+</nav>
+<div class="mobile-backdrop" id="mobileBackdrop" hidden></div>
+
+  <main class="about-wrap">
+    <nav class="breadcrumb" aria-label="Ruta de navegación">
+      <a href="index.html">Inicio</a> <span>›</span>
+      <span>Nosotros</span>
+    </nav>
+
+    <header class="about-hero">
+      <h1 class="heading-playfair underlined">Nosotros</h1>
+      <p>Del campo a tu hogar — calidad, frescura y compromiso con lo local.</p>
+    </header>
+
+    <section class="about-section">
+      <h2 class="heading-playfair underlined">Misión</h2>
+      <p class="section-text">
+        Nuestra misión es proporcionar productos frescos y de calidad directamente desde el campo
+        hasta la puerta de nuestros clientes, garantizando la frescura y el sabor en cada entrega.
+        Nos comprometemos a fomentar una conexión más cercana entre los consumidores y los
+        agricultores locales, apoyando prácticas agrícolas sostenibles y promoviendo una
+        alimentación saludable en todos los hogares chilenos.
+      </p>
+    </section>
+
+    <section class="about-section">
+      <h2 class="heading-playfair underlined">Visión</h2>
+      <p class="section-text">
+        Nuestra visión es ser la tienda online líder en la distribución de productos frescos y
+        naturales en Chile, reconocida por nuestra calidad excepcional, servicio al cliente y
+        compromiso con la sostenibilidad. Aspiramos a expandir nuestra presencia a nivel nacional
+        e internacional, estableciendo un nuevo estándar en la distribución de productos agrícolas
+        directos del productor al consumidor.
+      </p>
+    </section>
+
+    <!-- Valores / pilares -->
+    <section class="about-grid">
+      <article class="about-card">
+        <h3 class="heading-playfair sm">Calidad</h3>
+        <p class="section-text">Seleccionamos productos con altos estándares de frescura y sabor.</p>
+      </article>
+      <article class="about-card">
+        <h3 class="heading-playfair sm">Sustentabilidad</h3>
+        <p class="section-text">Impulsamos prácticas responsables y reducimos desperdicios.</p>
+      </article>
+      <article class="about-card">
+        <h3 class="heading-playfair sm">Local</h3>
+        <p class="section-text">Conectamos productores locales con hogares de todo Chile.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer id="contacto">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <a href="index.html"><img src="img/logo1.png" alt="Huerto Hogar Footer Logo"></a>
+      </div>
+      <div class="links">
+        <a href="#">Contacto</a> |
+        <a href="#">Preguntas Frecuentes</a> |
+        <a href="nosotros.html">Nosotros</a> |
+        <a href="#">Sustentabilidad</a>
+      </div>
+      <p class="copy">© 2025 Huerto Hogar – Todos los derechos reservados</p>
+    </div>
+  </footer>
+
+  <!-- JS global (para badge de carrito y auth en header) -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

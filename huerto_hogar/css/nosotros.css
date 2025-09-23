@@ -1,0 +1,103 @@
+/* Layout general */
+.about-wrap{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1rem 3rem;
+}
+
+/* Hero */
+.about-hero{
+  text-align:center;
+  margin: 1rem 0 2rem;
+}
+.about-hero h1{
+  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+  margin: 0 0 .35rem;
+  font-weight: 700;
+}
+.about-hero p{
+  opacity:.85;
+  margin: 0;
+}
+
+/* Secciones texto */
+.about-section{
+  background:#fff;
+  border:1px solid #eee;
+  border-radius:12px;
+  padding: 1.25rem 1.25rem 1.1rem;
+  margin: 0 0 1rem;
+}
+.about-section h2{
+  margin: 0 0 .5rem;
+  font-size: 1.15rem;
+  color: #3F4F44;
+}
+
+/* Tarjetas de valores */
+.about-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+.about-card{
+  background:#fff;
+  border:1px solid #eee;
+  border-radius:12px;
+  padding: 1rem;
+  text-align:left;
+}
+.about-card h3{
+  margin: 0 0 .35rem;
+  font-size: 1.05rem;
+  color:#3F4F44;
+}
+.about-card p{
+  margin: 0;
+  opacity: .9;
+}
+
+/* Responsive */
+@media (max-width: 820px){
+  .about-grid{ grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 520px){
+  .about-grid{ grid-template-columns: 1fr; }
+}
+
+/* Títulos elegantes (Playfair Display) para secciones como Misión, Visión, etc. */
+.heading-playfair {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;              /* fuerte y elegante */
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  line-height: 1.2;
+  color: #2c3e50;
+  letter-spacing: .5px;
+  margin: 1.25rem 0 .75rem;
+}
+
+/* Variante con subrayado sutil (opcional) */
+.heading-playfair.underlined {
+  position: relative;
+  padding-bottom: .35rem;
+}
+.heading-playfair.underlined::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 64px;
+  height: 3px;
+  background: #819A91; /* tu verde claro */
+  border-radius: 2px;
+}
+
+/* Ajustes para textos de sección */
+.section-text {
+  font-family: 'Poppins','Roboto',sans-serif;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: #333;
+  margin: 0 0 1rem;
+}

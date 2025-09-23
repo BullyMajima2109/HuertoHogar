@@ -5,47 +5,83 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Carrito – Huerto Hogar</title>
 
+  <!-- Estilos globales y específicos -->
   <link rel="stylesheet" href="css/style.css"/>
   <link rel="stylesheet" href="css/carrito.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Barra superior -->
   <div class="top-bar">
     <p>Despacho gratis sobre $30.000 • 10 % OFF primera compra</p>
   </div>
 
+  <!-- Header -->
   <header class="main-header">
-    <div class="logo"><a href="index.html"><img src="img/logo.png" alt="Huerto Hogar"></a></div>
-    <div class="search-bar"><input type="text" placeholder="Buscar productos..." aria-label="Buscar productos"></div>
+    <!-- Botón hamburguesa (único) -->
+    <button class="hamburger" id="hamburgerBtn"
+            aria-label="Abrir menú" aria-controls="mobileMenu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <div class="logo">
+      <a href="index.html"><img src="img/logo.png" alt="Huerto Hogar"></a>
+    </div>
+
+    <div class="search-bar">
+      <input type="text" placeholder="Buscar productos..." aria-label="Buscar productos">
+    </div>
+
     <div class="actions">
       <a id="loginLink" href="login.html">Login</a>
-      <a href="index.html#frutas">Catálogo</a>
       <a id="cartLink" href="carrito.html" aria-label="Carrito">
         🛒 <span id="cartCount" class="cart-badge" aria-label="Productos en carrito">0</span>
       </a>
     </div>
   </header>
 
+  <!-- Menú móvil -->
+  <nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <ul>
+      <li><a href="index.html#frutas">Frutas</a></li>
+      <li><a href="index.html#verduras">Verduras</a></li>
+      <li><a href="index.html#organicos">Orgánicos</a></li>
+      <li><a href="index.html#lacteos">Lácteos</a></li>
+      <li class="sep"></li>
+      <li><a href="login.html" id="mmLogin">Login</a></li>
+      <li><a href="carrito.html">Carrito <span id="mmCartCount" class="cart-badge">0</span></a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+    </ul>
+  </nav>
+  <div class="mobile-backdrop" id="mobileBackdrop" hidden></div>
+
+  <!-- Contenido principal -->
   <main class="cart-wrap">
-    <nav class="breadcrumb">
+    <nav class="breadcrumb" aria-label="Ruta de navegación">
       <a href="index.html">Inicio</a> <span>›</span>
       <span>Carrito</span>
     </nav>
 
     <div id="cartNotice" style="color:#c0392b; margin:.25rem 0;"></div>
-    <section id="cartView" class="cart"></section>
+
+    <!-- Aquí el JS renderiza el carrito -->
+    <section class="cart-container">
+      <div id="cartView"></div>
+    </section>
   </main>
 
+  <!-- Footer -->
   <footer id="contacto">
     <div class="footer-inner">
-      <div class="footer-logo"><a href="index.html"><img src="img/logo1.png" alt="Huerto Hogar Footer Logo"></a></div>
+      <div class="footer-logo">
+        <a href="index.html"><img src="img/logo1.png" alt="Huerto Hogar Footer Logo"></a>
+      </div>
       <p class="copy">© 2025 Huerto Hogar – Todos los derechos reservados</p>
     </div>
   </footer>
 
-  <!-- IMPORTANTE: Catálogo primero -->
+  <!-- JS: catálogo primero (para precios/imagenes), luego la app -->
   <script src="js/catalogo.js"></script>
-  <!-- App (carrito/render) después -->
-  <script src="js/app.js"></script>
+  <script type="module" src="js/app.js"></script>
 </body>
 </html>
